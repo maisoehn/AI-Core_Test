@@ -1,14 +1,14 @@
 apiVersion: ai.sap.com/v1alpha1
 kind: ServingTemplate
 metadata:
-  name: image-seg-infer-tutorial
+  name: service-order-infer
   annotations:
     scenarios.ai.sap.com/description: "SAP AI Core service scenario"
-    scenarios.ai.sap.com/name: "service-scenario"
+    scenarios.ai.sap.com/name: "service-order-scenario"
     executables.ai.sap.com/description: "Inference executable for service model inference"
     executables.ai.sap.com/name: "service-infer-exec"
   labels:
-    scenarios.ai.sap.com/id: "service"
+    scenarios.ai.sap.com/id: "service-orde-training"
     executables.ai.sap.com/id: "service-infer"
     ai.sap.com/version: "1.0.0"
 spec:
@@ -33,10 +33,10 @@ spec:
         maxReplicas: 5
         containers:
         - name: kserve-container
-          image: "docker.io/msoehn/image-seg-serve:???"
+          image: "docker.io/msoehn/image-seg-serve:mobilenet"
           ports:
             - containerPort: 9001
               protocol: TCP
           env:
             - name: STORAGE_URI
-              value: "{{inputs.artifacts.servicemodel}}"
+              value: "{{inputs.artifacts.imagesegmodel}}"
