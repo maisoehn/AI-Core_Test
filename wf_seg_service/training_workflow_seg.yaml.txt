@@ -11,7 +11,7 @@ metadata:
     artifacts.ai.sap.com/image-model-tutorial.kind: "model"
   labels:
     scenarios.ai.sap.com/id: "service-order-training"
-    executables.ai.sap.com/id: "service-order-training"
+    executables.ai.sap.com/id: "service-data-train"
     ai.sap.com/version: "1.0.0"
 spec:
   imagePullSecrets:
@@ -28,13 +28,13 @@ spec:
             path: /app/data/
       outputs:
         artifacts:
-          - name: service-model
+          - name: image-model-tutorial
             path: /app/model
-            globalName: service-model
+            globalName: image-model-tutorial
             archive:
               none: {}
       container:
-        image: "docker.io/msoehn/service-train:??"
+        image: "docker.io/msoehn/image-seg-train:mobilnet"
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         args:
