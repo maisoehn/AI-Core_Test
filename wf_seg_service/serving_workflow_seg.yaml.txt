@@ -1,15 +1,15 @@
 apiVersion: ai.sap.com/v1alpha1
 kind: ServingTemplate
 metadata:
-  name: service-order-infer
+  name: image-seg-infer-tutorial
   annotations:
-    scenarios.ai.sap.com/description: "SAP AI Core service scenario"
-    scenarios.ai.sap.com/name: "service-order-scenario"
-    executables.ai.sap.com/description: "Inference executable for service model inference"
-    executables.ai.sap.com/name: "service-infer-exec"
+    scenarios.ai.sap.com/description: "SAP AI Core tutorial scenario"
+    scenarios.ai.sap.com/name: "image-seg-tutorial-scenario"
+    executables.ai.sap.com/description: "Inference executable for image segmentation"
+    executables.ai.sap.com/name: "image-seg-infer-tutorial-exec"
   labels:
-    scenarios.ai.sap.com/id: "service-orde-training"
-    executables.ai.sap.com/id: "service-infer"
+    scenarios.ai.sap.com/id: "image-seg-tutorial"
+    executables.ai.sap.com/id: "image-seg-infer-tutorial"
     ai.sap.com/version: "1.0.0"
 spec:
   inputs:
