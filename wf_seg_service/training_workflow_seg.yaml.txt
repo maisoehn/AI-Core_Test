@@ -1,30 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: service-data-train
+  name: image-seg-train-tutorial
   annotations:
-    scenarios.ai.sap.com/description: "Service order train scenario"
-    scenarios.ai.sap.com/name: "service-order-scenario"
-    executables.ai.sap.com/description: "Service order training executable"
-    executables.ai.sap.com/name: "service-order-train-tutorial-exec"
+    scenarios.ai.sap.com/description: "SAP developers tutorial scenario"
+    scenarios.ai.sap.com/name: "image-seg-tutorial-scenario"
+    executables.ai.sap.com/description: "Image segmentation training executable"
+    executables.ai.sap.com/name: "image-seg-train-tutorial-exec"
     artifacts.ai.sap.com/image-data.kind: "dataset"
     artifacts.ai.sap.com/image-model-tutorial.kind: "model"
   labels:
-    scenarios.ai.sap.com/id: "service-order-training"
-    executables.ai.sap.com/id: "service-data-train"
+    scenarios.ai.sap.com/id: "image-seg-tutorial"
+    executables.ai.sap.com/id: "image-seg-train-tutorial"
     ai.sap.com/version: "1.0.0"
 spec:
   imagePullSecrets:
     - name: docker-registry-secret
-  entrypoint: service-sk-training
+  entrypoint: image-seg-sk-training
   templates:
-    - name: service-sk-training
+    - name: image-seg-sk-training
       metadata:
         labels:
           ai.sap.com/resourcePlan: infer.s
       inputs:
         artifacts:
-          - name: service-data
+          - name: image-data
             path: /app/data/
       outputs:
         artifacts:
@@ -34,7 +34,7 @@ spec:
             archive:
               none: {}
       container:
-        image: "docker.io/msoehn/image-seg-train:mobilnet"
+        image: "docker.io/msoehn/image-seg-train:mobilenet"
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         args:
