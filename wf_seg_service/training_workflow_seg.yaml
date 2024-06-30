@@ -34,7 +34,7 @@ spec:
             archive:
               none: {}
       container:
-        image: "docker.io/msoehn/service-regression-train"
+        image: "docker.io/msoehn/service-regression-train:0.0.1"
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         args:
