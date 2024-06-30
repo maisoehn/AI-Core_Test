@@ -1,42 +1,42 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: image-seg-train-tutorial
+  name: service-regression-train
   annotations:
-    scenarios.ai.sap.com/description: "SAP developers tutorial scenario"
-    scenarios.ai.sap.com/name: "image-seg-tutorial-scenario"
-    executables.ai.sap.com/description: "Image segmentation training executable"
-    executables.ai.sap.com/name: "image-seg-train-tutorial-exec"
+    scenarios.ai.sap.com/description: "Service regression train"
+    scenarios.ai.sap.com/name: "service-regression-scenario"
+    executables.ai.sap.com/description: "Service training executable"
+    executables.ai.sap.com/name: "service-ex-regression-exec"
     artifacts.ai.sap.com/image-data.kind: "dataset"
     artifacts.ai.sap.com/image-model-tutorial.kind: "model"
   labels:
-    scenarios.ai.sap.com/id: "image-seg-tutorial"
-    executables.ai.sap.com/id: "image-seg-train-tutorial"
+    scenarios.ai.sap.com/id: "service-regression"
+    executables.ai.sap.com/id: "service-ex-regression"
     ai.sap.com/version: "1.0.0"
 spec:
   imagePullSecrets:
     - name: docker-registry-secret
-  entrypoint: image-seg-sk-training
+  entrypoint: service-regression-train
   templates:
-    - name: image-seg-sk-training
+    - name: service-regression-sk-training
       metadata:
         labels:
           ai.sap.com/resourcePlan: infer.s
       inputs:
         artifacts:
-          - name: image-data
-            path: /app/data/
+          - name: service-regression-data
+            path: /app/src/data/
       outputs:
         artifacts:
-          - name: image-model-tutorial
-            path: /app/model
-            globalName: image-model-tutorial
+          - name: service-regression-model
+            path: /app/src/model
+            globalName: service-regression-model
             archive:
               none: {}
       container:
-        image: "docker.io/msoehn/image-seg-train:mobilenet"
+        image: "docker.io/msoehn/service-regression-train"
         imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         args:
           - >
-            set -e && echo "---Start Training---" && python /app/src/train.py && ls -lR /app/model && echo "---End Training---"
+            set -e && echo "---Start Training---" && python /app/src/loadTrainData.py && ls -lR /app/src/model && echo "---End Training---"
