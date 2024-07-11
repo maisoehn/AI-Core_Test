@@ -29,7 +29,7 @@ spec:
       outputs:
         artifacts:
           - name: service-regression-model
-            path: /app/src/model
+            path: /app/src
             globalName: service-regression-model
             archive:
               none: {}
