@@ -7,8 +7,8 @@ metadata:
     scenarios.ai.sap.com/name: "service-regression-scenario"
     executables.ai.sap.com/description: "Service training executable"
     executables.ai.sap.com/name: "service-ex-regression-exec"
-    artifacts.ai.sap.com/image-data.kind: "dataset"
-    artifacts.ai.sap.com/image-model-tutorial.kind: "model"
+    artifacts.ai.sap.com/text-data.kind: "dataset"
+    artifacts.ai.sap.com/text-model-tutorial.kind: "model"
   labels:
     scenarios.ai.sap.com/id: "service-regression"
     executables.ai.sap.com/id: "service-ex-regression"
