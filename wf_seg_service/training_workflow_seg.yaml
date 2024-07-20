@@ -16,7 +16,7 @@ metadata:
 spec:
   imagePullSecrets:
     - name: docker-registry-secret
-  entrypoint: service-regression-train
+  entrypoint: service-regression-trainMS
   templates:
     - name: service-regression-sk-training
       metadata:
