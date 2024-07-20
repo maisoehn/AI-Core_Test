@@ -21,7 +21,7 @@ spec:
     - name: service-regression-sk-training
       metadata:
         labels:
-          ai.sap.com/resourcePlan: Starter
+          ai.sap.com/resourcePlan: starter
       inputs:
         artifacts:
           - name: service-regression-data
