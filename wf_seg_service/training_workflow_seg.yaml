@@ -24,11 +24,11 @@ spec:
           ai.sap.com/resourcePlan: starter
       inputs:
         artifacts:
-          - name: service-regression-data
+          - name: text-data
             path: /app/src/data/
       outputs:
         artifacts:
-          - name: service-regression-model
+          - name: text-model-tutorial
             path: /app/src
             globalName: service-regression-model
             archive:
