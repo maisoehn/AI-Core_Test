@@ -18,7 +18,7 @@ spec:
     - name: docker-registry-secret
   entrypoint: service-regression-train
   templates:
-    - name: service-regression-sk-training
+    - name: service-regression-train
       metadata:
         labels:
           ai.sap.com/resourcePlan: starter
