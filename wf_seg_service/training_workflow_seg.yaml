@@ -24,7 +24,7 @@ spec:
           ai.sap.com/resourcePlan: starter
       inputs:
         artifacts:
-          - name: service-regression-data
+          - name: daily-bike-share
             path: /app/src/data/
       outputs:
         artifacts:
